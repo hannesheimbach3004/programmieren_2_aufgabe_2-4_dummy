@@ -30,16 +30,17 @@ def find_person_data_by_name(suchstring):
     for eintrag in person_data:
         if eintrag["lastname"] == nachname and eintrag["firstname"] == vorname:
             return eintrag
-        else:
-            return {}
+    return {}
 
 
 def picture_path(suchstring):
     current_person_dict = find_person_data_by_name(suchstring)
 
-    current_picture_path = current_person_dict["picture_path"]
-
-    return current_picture_path
+    if "picture_path" in current_person_dict:
+        current_picture_path = current_person_dict["picture_path"]
+        return current_picture_path
+    else:
+        return "data/pictures/none.jpg"
 
 
 if __name__ == "__main__":

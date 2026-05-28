@@ -18,10 +18,13 @@ currentpicturepath = read_data.picture_path(
     current_user
 )  # den picturepath aus dem dicitonary auslesen
 
-# Laden eines Bilds
-image = Image.open(currentpicturepath)
-# Anzeigen eines Bilds mit Caption
-st.image(image, caption=current_user)
+# Laden eines Bilds mit Safety falls kein Bild vorhanden
+if currentpicturepath:
+    image = Image.open(currentpicturepath)
+    # Anzeigen eines Bilds mit Caption
+    st.image(image, caption=current_user)
+else:
+    st.write("nix Bild da")
 
 
 if __name__ == "__main__":
